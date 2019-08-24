@@ -23,6 +23,19 @@ class Prime:
       if r * r > d:
         return True
 
+  def factorize(self, d):
+    """prime factorization"""
+    for r in self.generate():
+      if r * r > d:
+        yield d
+        break
+      while True:
+        q, m = divmod(d, r)
+        if m != 0:
+          break
+        yield r
+        d = q
+
 if __name__ == '__main__':
   p = Prime()
   print(p.isprime(888888888887))
