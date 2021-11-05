@@ -1,3 +1,5 @@
+__version__ = '0.2'
+
 class Prime:
   """class about prime numbers"""
   
