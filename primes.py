@@ -42,6 +42,8 @@ class Prime:
           break
         yield r
         d = q
+      if d == 1:
+        break
 
 if __name__ == '__main__':
   p = Prime()
