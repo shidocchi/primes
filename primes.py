@@ -20,10 +20,7 @@ class Prime:
   def isprime(self, d):
     """test primality"""
     if d <= self.table[-1]:
-      if d in self.table:
-        return True
-      else:
-        return False
+      return d in self.table
     for r in self.generate():
       if d % r == 0:
         return False
