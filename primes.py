@@ -19,12 +19,14 @@ class Prime:
 
   def isprime(self, d):
     """test primality"""
-    if d <= self.table[-1]:
-      if d in self.table:
-        return True
-      else:
-        return False
-    for r in self.generate():
+    r = self.table[-1]
+    if d <= r:
+      return d in self.table
+    elif d <= r * r:
+      g = self.table
+    else:
+      g = self.generate()
+    for r in g:
       if d % r == 0:
         return False
       if r * r > d:
