@@ -13,7 +13,7 @@ class Prime:
     assert d > 3
     while True:
       d += (d + 3) % 6
-      if self.isprime(d):
+      if self._isprime(d, self.table[2:]):
         yield d
         self.table.append(d)
 
@@ -23,14 +23,17 @@ class Prime:
     if d <= r:
       return d in self.table
     elif d <= r * r:
-      g = self.table
+      return self._isprime(d, self.table)
     else:
-      g = self.generate()
-    for r in g:
+      return self._isprime(d, self.generate())
+
+  def _isprime(self, d, gen):
+    for r in gen:
+      if r * r > d:
+        break
       if d % r == 0:
         return False
-      if r * r > d:
-        return True
+    return True
 
   def factorize(self, d):
     """prime factorization"""
