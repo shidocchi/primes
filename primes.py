@@ -52,4 +52,4 @@ class Prime:
 
 if __name__ == '__main__':
   p = Prime()
-  print(p.isprime(888888888887))
+  print(p.isprime(999999999989))
