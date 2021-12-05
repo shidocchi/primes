@@ -1,21 +1,31 @@
+from itertools import count
+
 __version__ = '0.2'
 
 class Prime:
   """class about prime numbers"""
   
-  def __init__(self, initial=None):
-    self.table = initial or [2, 3, 5, 7, 11]
+  def __init__(self, level=300):
+    self.level = level
+    self.init_sieve()
+
+  def init_sieve(self):
+    """initial state of sieve"""
+    self.table = [2]
+    self.sieve = count(3, 2)
+    for i in range(1, self.level):
+      p = next(self.sieve)
+      self.sieve = filter(p.__rmod__, self.sieve)
+      self.table.append(p)
 
   def generate(self):
     """infinite generator of primes"""
     yield from self.table
-    d = self.table[-1]
-    assert d > 3
     while True:
-      d += (d + 3) % 6
-      if self._isprime(d, self.table[2:]):
-        yield d
-        self.table.append(d)
+      p = next(self.sieve)
+      if self._isprime(p, self.table[self.level:]):
+        self.table.append(p)
+        yield p
 
   def isprime(self, d):
     """test primality"""
