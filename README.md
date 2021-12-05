@@ -20,7 +20,7 @@
 ```
 >>> from primes import Prime
 >>> p = Prime()
->>> p.isprime(888888888887)
+>>> p.isprime(999999999989)
 True
 ```
 
