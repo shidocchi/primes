@@ -1,21 +1,31 @@
-__version__ = '0.2'
+from itertools import count
+
+__version__ = '0.3.0'
 
 class Prime:
   """class about prime numbers"""
   
-  def __init__(self, initial=None):
-    self.table = initial or [2, 3, 5, 7, 11]
+  def __init__(self, level=300):
+    self.level = level
+    self.init_sieve()
+
+  def init_sieve(self):
+    """initial state of sieve"""
+    self.table = [2]
+    self.sieve = count(3, 2)
+    for i in range(1, self.level):
+      p = next(self.sieve)
+      self.sieve = filter(p.__rmod__, self.sieve)
+      self.table.append(p)
 
   def generate(self):
     """infinite generator of primes"""
     yield from self.table
-    d = self.table[-1]
-    assert d > 3
     while True:
-      d += (d + 3) % 6
-      if self.isprime(d):
-        yield d
-        self.table.append(d)
+      p = next(self.sieve)
+      if self._isprime(p, self.table[self.level:]):
+        self.table.append(p)
+        yield p
 
   def isprime(self, d):
     """test primality"""
@@ -23,14 +33,17 @@ class Prime:
     if d <= r:
       return d in self.table
     elif d <= r * r:
-      g = self.table
+      return self._isprime(d, self.table)
     else:
-      g = self.generate()
-    for r in g:
+      return self._isprime(d, self.generate())
+
+  def _isprime(self, d, gen):
+    for r in gen:
+      if r * r > d:
+        break
       if d % r == 0:
         return False
-      if r * r > d:
-        return True
+    return True
 
   def factorize(self, d):
     """prime factorization"""
@@ -49,4 +62,4 @@ class Prime:
 
 if __name__ == '__main__':
   p = Prime()
-  print(p.isprime(888888888887))
+  print(p.isprime(999999999989))
