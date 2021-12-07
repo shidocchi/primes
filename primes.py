@@ -1,6 +1,6 @@
-from itertools import count
+from itertools import count, islice
 
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 
 class Prime:
   """class about prime numbers"""
@@ -59,6 +59,16 @@ class Prime:
         d = q
       if d == 1:
         break
+
+  def get(self, item):
+    if isinstance(item, slice):
+      return islice(self.generate(), item.start, item.stop)
+    else:
+      return next(islice(self.generate(), item, None))
+
+  __contains__ = isprime
+  __getitem__ = get
+
 
 if __name__ == '__main__':
   p = Prime()
