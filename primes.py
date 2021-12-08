@@ -62,7 +62,7 @@ class Prime:
 
   def get(self, item):
     if isinstance(item, slice):
-      return islice(self.generate(), item.start, item.stop)
+      return islice(self.generate(), item.start, item.stop, item.step)
     else:
       return next(islice(self.generate(), item, None))
 
