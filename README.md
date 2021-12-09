@@ -1,6 +1,7 @@
 # primes
 
 ## generate primes
+`generate()` returns an infinite iterator of prime numbers:
 ```
 >>> from primes import Prime
 >>> from itertools import islice
@@ -10,6 +11,7 @@
 >>> next(islice(p.generate(), 9999, None))
 104729
 ```
+Prime object has indexing and slicing operator as pickup n-th prime number:
 ```
 >>> from primes import Prime
 >>> p = Prime()
@@ -20,12 +22,14 @@
 ```
 
 ## test primality
+`isprime(d)` does primality test:
 ```
 >>> from primes import Prime
 >>> p = Prime()
 >>> p.isprime(999999999989)
 True
 ```
+Prime object has containment operator as primality test:
 ```
 >>> from primes import Prime
 >>> p = Prime()
