@@ -52,33 +52,33 @@ class PrimesTest(unittest.TestCase):
   def test_generate1(self):
     """prime generator 1"""
     p = Prime()
-    self.assertEqual(self.c, list(islice(p.generate(),len(self.c))))
+    self.assertEqual(self.c, list(p[:len(self.c)]))
 
   def test_generate2(self):
     """prime generator 2"""
     p = Prime()
-    self.assertEqual(131071, next(islice(p.generate(),12250,None)))
+    self.assertEqual(131071, p[12250])
 
   def test_isprime1(self):
     """primality test 1"""
     p = Prime()
-    self.assertTrue(p.isprime(99999989))
+    self.assertTrue(99999989 in p)
 
   def test_isprime2(self):
     """primality test 2"""
     p = Prime()
-    self.assertTrue(p.isprime(999999999989))
+    self.assertTrue(999999999989 in p)
 
   def test_isprime3(self):
     """primality test 3"""
     p = Prime()
-    self.assertTrue(p.isprime(99999989))
-    self.assertTrue(p.isprime(999999999989))
+    self.assertTrue(99999989 in p)
+    self.assertTrue(999999999989 in p)
 
   def test_isprime4(self):
     """primality test 4"""
     p = Prime()
-    self.assertFalse(p.isprime(9999399973))
+    self.assertTrue(9999399973 not in p)
 
   def test_factorize1(self):
     """prime factorization 1"""
