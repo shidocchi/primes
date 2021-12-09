@@ -5,14 +5,18 @@
 >>> from primes import Prime
 >>> from itertools import islice
 >>> p = Prime()
->>> list(islice(p.generate(),10))
+>>> list(islice(p.generate(), 10))
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+>>> next(islice(p.generate(), 9999, None))
+104729
 ```
 ```
 >>> from primes import Prime
 >>> p = Prime()
 >>> list(p[:10])
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+>>> p[9999]
+104729
 ```
 
 ## test primality
