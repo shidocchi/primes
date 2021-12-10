@@ -47,29 +47,62 @@ True
 
 ## recursive level of sieve
 ```
->>> import timeit
+>>> from timeit import Timer
 >>> from primes import Prime
 
 >>> p = Prime(1)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-172.78589289999996
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+6.5800526999999995
 
 >>> p = Prime(10)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-44.14487299999996
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+5.1535572
 
 >>> p = Prime(100)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-18.42776409999999
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+5.505758799999999
+
+>>> p = Prime(110)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+4.2914393
+
+>>> p = Prime(120)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.6435238000000005
+
+>>> p = Prime(130)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.878485399999999
+
+>>> p = Prime(140)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.599328
+
+>>> p = Prime(150)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.6003222999999984
+
+>>> p = Prime(160)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+3.058673800000001
+
+>>> p = Prime(170)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+3.2432144999999934
+
+>>> p = Prime(180)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+3.0593873999999985
+
+>>> p = Prime(190)
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.8756100000000018
 
 >>> p = Prime(200)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-12.965470800000048
-
->>> p = Prime(300)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-13.335162399999945
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+2.885937499999997
 
 >>> p = Prime(1000)
->>> timeit.timeit('p.isprime(999999999989)', globals=globals(), number=1)
-19.738375399999995
+>>> Timer('999999999989 in p', globals=globals()).timeit(1)
+11.356283400000002
+```
