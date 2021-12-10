@@ -24,28 +24,28 @@ class PrimesTest(unittest.TestCase):
   def test_init1(self):
     """remove multiples of 2"""
     p = Prime(1)
-    self.assertEqual(self.c[:1], p.table)
+    self.assertEqual(self.c[:1], list(p.table))
     self.assertEqual(self.c[1:4], list(islice(p.sieve,3)))
     self.assertEqual(9, next(p.sieve))
 
   def test_init2(self):
     """remove multiples of 2-3"""
     p = Prime(2)
-    self.assertEqual(self.c[:2], p.table)
+    self.assertEqual(self.c[:2], list(p.table))
     self.assertEqual(self.c[2:9], list(islice(p.sieve,7)))
     self.assertEqual(25, next(p.sieve))
 
   def test_init3(self):
     """remove multiples of 2-3-5"""
     p = Prime(3)
-    self.assertEqual(self.c[:3], p.table)
+    self.assertEqual(self.c[:3], list(p.table))
     self.assertEqual(self.c[3:15], list(islice(p.sieve,12)))
     self.assertEqual(49, next(p.sieve))
 
   def test_init4(self):
     """remove multiples of 2-3-5-7"""
     p = Prime(4)
-    self.assertEqual(self.c[:4], p.table)
+    self.assertEqual(self.c[:4], list(p.table))
     self.assertEqual(self.c[4:30], list(islice(p.sieve,26)))
     self.assertEqual(121, next(p.sieve))
 

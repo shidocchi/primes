@@ -1,17 +1,21 @@
+import array
 from itertools import count, islice
 
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 class Prime:
   """class about prime numbers"""
   
-  def __init__(self, level=300):
+  def __init__(self, level=200, typecode='L'):
     self.level = level
+    self.typecode = typecode
     self.init_sieve()
 
   def init_sieve(self):
     """initial state of sieve"""
     self.table = [2]
+    if self.typecode:
+      self.table = array.array(self.typecode, self.table)
     self.sieve = count(3, 2)
     for i in range(1, self.level):
       p = next(self.sieve)
