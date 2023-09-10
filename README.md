@@ -46,6 +46,23 @@ True
 ```
 
 ## recursive level of sieve
+First argument of Prime() is initial number of primes prior to be called generate().
+```
+>>> from primes import Prime
+
+>>> p = Prime(1)
+>>> p.table
+array('L', [2])
+
+>>> p = Prime(2)
+>>> p.table
+array('L', [2, 3])
+
+>>> p = Prime(3)
+>>> p.table
+array('L', [2, 3, 5])
+```
+It affects processing speed of generating.
 ```
 >>> from timeit import Timer
 >>> from primes import Prime
