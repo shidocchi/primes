@@ -45,6 +45,36 @@ True
 [2, 2, 2, 3, 3, 5]
 ```
 
+## command line mode
+
+```
+$ python -m primes
+usage: primes.py [-h] [-i] [-n NUMBER] [-p ISPRIME] [-f FACTOR] [-t {H,L,Q}]
+
+options:
+  -h, --help            show this help message and exit
+  -i, --interact        interaction assigned p as primes object
+  -n NUMBER, --number NUMBER
+                        number of primes: p[n]
+  -p ISPRIME, --isprime ISPRIME
+                        check primality: n in p
+  -f FACTOR, --factor FACTOR
+                        factorize
+  -t {H,L,Q}, --type {H,L,Q}
+                        array type
+
+
+$ python -m primes -n 9999
+p[9999] : 104729
+
+$ python -m primes -p 99999999989
+99999999989 in p : True
+
+$ python -m primes -f 1098901098901
+p.factorize(1098901098901) : [769231, 1428571]
+
+```
+
 ## recursive level of sieve
 ```
 >>> from timeit import Timer
