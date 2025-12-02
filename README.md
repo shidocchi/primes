@@ -1,5 +1,10 @@
 # primes
 
+prime number generator
+
+- 素数生成ジェネレータの説明用に作ったライブラリです
+- 「素数生成ジェネレータ」「素数判定」「素因数分解」の3つを扱います
+
 ## generate primes
 `generate()` returns an infinite iterator of prime numbers:
 ```
@@ -123,3 +128,4 @@ It affects processing speed of generating.
 >>> Timer('999999999989 in p', globals=globals()).timeit(1)
 11.356283400000002
 ```
+
