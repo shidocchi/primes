@@ -1,5 +1,11 @@
 # primes
 
+prime number generator
+
+- 素数ジェネレータ・素数判定・素因数分解のライブラリ
+- setuptoolsやプログラミングの演習用ですので、実用（特にセキュリティ関係）には使わないでください
+- 再帰呼び出しを使っているのが原因と思われますが、ふるい段数を増やすと処理が返ってこないです
+
 ## generate primes
 `generate()` returns an infinite iterator of prime numbers:
 ```
@@ -123,3 +129,4 @@ It affects processing speed of generating.
 >>> Timer('999999999989 in p', globals=globals()).timeit(1)
 11.356283400000002
 ```
+
