@@ -1,11 +1,13 @@
+import argparse
+import code
 from itertools import count, islice
 from array import array
 from collections.abc import Iterator
 from typing import Literal, Optional, Union
 
-__version__ = '0.4.2'
+__version__ = '0.5.0'
 
-TypeCode = Optional[Literal['B', 'H', 'L', 'Q']]
+TypeCode = Optional[Literal['H', 'L', 'Q']]
 Table = Union[array, list[int]]
 Sieve = Union[count, filter]
 Gen = Union[array, list[int], Iterator[int]]
@@ -84,7 +86,35 @@ class Prime:
   __contains__ = isprime
   __getitem__ = get
 
+def get_parser():
+  """argument parser"""
+  parser = argparse.ArgumentParser()
+  parser.add_argument('-i', '--interact', action='store_true',
+                      help='interaction assigned p as primes object')
+  parser.add_argument('-n', '--number', type=int,
+                      help='number of primes: p[n]')
+  parser.add_argument('-p', '--isprime', type=int,
+                      help='check primality: n in p')
+  parser.add_argument('-f', '--factor', type=int,
+                      help='factorize')
+  parser.add_argument('-t', '--type', choices=tuple('HLQ'),
+                      help='array type')
+  return parser
 
 if __name__ == '__main__':
-  p = Prime()
-  print(p.isprime(999999999989))
+  parser = get_parser()
+  args = parser.parse_args()
+  p = Prime(typecode=args.type)
+  if args.interact:
+    code.interact(banner='', local={'p':p})
+  elif args.number is not None:
+    print('p[{}] : {}'
+          .format(args.number, p[args.number]))
+  elif args.isprime is not None:
+    print('{} in p : {}'
+          .format(args.isprime, args.isprime in p))
+  elif args.factor is not None:
+    print('p.factorize({}) : {}'
+          .format(args.factor, list(p.factorize(args.factor))))
+  else:
+    parser.print_help()
